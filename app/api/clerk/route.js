@@ -2,11 +2,11 @@ import { Webhook } from "svix";
 import connectDB from "@/config/db";
 import User from "@/models/User";
 import { headers } from "next/headers";
-import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
-    const wh = new Webhook(process.env.SIGNING_SECRET);
-    const headerPayload = await headers();
+    const wh = new Webhook(process.env.SIGNING_SECRET)
+    const headerPayload = await headers()
     const svixHeaders = {
         "svix-id": headerPayload.get("svix-id"),
         "svix-timestamp": headerPayload.get("svix-timestamp"),
@@ -31,13 +31,15 @@ export async function POST(req) {
     await connectDB();
 
     switch (type) {
-        case "user.created":
+        case 'user.created':
             await User.create(userData)
             break;
-        case "user.updated":
+
+        case 'user.updated':
             await User.findByIdAndUpdate(data.id, userData)
             break;
-        case "user.deleted":
+
+        case 'user.deleted':
             await User.findByIdAndDelete(data.id)
             break;
 
@@ -45,5 +47,5 @@ export async function POST(req) {
             break;
     }
 
-    return NextRequest.json({message: "Event Received"});
+    return NextResponse.json({message: "Event Received"});
 }
