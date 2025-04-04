@@ -5,9 +5,9 @@ import {useAppContext} from "@/context/AppContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const ChatLabel = ({ openMenu, setOpenMenu }) => {
+const ChatLabel = ({ openMenu, setOpenMenu, id, name }) => {
 
-    const {fetchUsersChats, chats, setSelectedChat, id, name} = useAppContext();
+    const {fetchUsersChats, chats, setSelectedChat} = useAppContext();
 
     const selectChat = () => {
         const chatData = chats.find(chat => chat._id === id)

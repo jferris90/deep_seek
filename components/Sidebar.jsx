@@ -3,7 +3,7 @@ import Image from "next/image";
 import {assets} from "@/assets/assets";
 import  { useClerk,  UserButton } from "@clerk/nextjs";
 import {useAppContext} from "@/context/AppContext";
-import ChatLabel from "@/components/ChatLabel";
+import ChatLabel from "./ChatLabel";
 
 const Sidebar = ({ expand, setExpand }) => {
 

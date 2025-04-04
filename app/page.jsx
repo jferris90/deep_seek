@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import {assets} from "@/assets/assets";
@@ -28,7 +28,7 @@ export default function Home() {
         behavior: "smooth",
       })
     }
-  }, [messages]);
+  },[messages]);
 
   return (
     <div>
